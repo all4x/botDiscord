@@ -3,15 +3,16 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def cfg_config_csgo(player):
+def cfg_config_csgo():
 
-    state_url = (f'https://prosettings.net/players{player}')
+    state_url = ('https://prosettings.net/players/s1mple')
     page = requests.get(state_url)
+    print(page.status_code)
+
     soup = BeautifulSoup(page.content, 'html.parser')
     indicadors = soup.select('.center-container') 
 
 
-    return [ (ind.select('.name')[0].text: ind.select('.content')[0].text) for ind in indicadors ]
+    print(indicadors)
 
-
-    cfg_config_csgo('')
+    cfg_config_csgo()
